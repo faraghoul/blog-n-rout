@@ -7,10 +7,6 @@ import TinyMCE from 'react-tinymce';
 
 class PostNew extends Component {
 
-    handleEditorChange = (e) => {
-        console.log('Content was updated:', e.target.getContent());
-    }
-
     renderField(field){
         return (
           <div className="form-grouping">
@@ -20,40 +16,79 @@ class PostNew extends Component {
                   {...field.input}
               />
 
-              {field.meta.error}
+              <p className="error-block">{field.meta.error}</p>
           </div>
         );
-    }
+    };
 
-    renderPostRedactor(field){
-        return(
+    renderRadioBtn(field){
+        let radioButtonValue = 'active';
+        return (
             <div className="form-grouping">
-                <label> {field.label} </label>
-                <TinyMCE
-                    content={'..'}
-                    config={{
-                        plugins: 'autolink link image lists print preview',
-                        toolbar: 'styleselect | undo redo | bold italic | alignleft aligncenter alignright'
-                    }}
-                    onChange={this.handleEditorChange}
-                    {...field.textarea}
+                <label> {field.label}
+                <input
+                    type="radio"
+                    value={radioButtonValue}
+                    {...field.input}
                 />
-
+                </label>
+                <p className="error-block">{field.meta.touched ? field.meta.error : ''}</p>
             </div>
         );
     }
 
+    renderPostRedactor(field){
+
+        let props = Object.assign({}, field);
+        delete props.input;
+        delete props.meta;
+
+        return(
+            <div className="form-grouping">
+                <label> {field.label} </label>
+                <TinyMCE
+                    {...props}
+                    content={field.input.content !== '' ? field.input.content : null}
+                    config={{
+                        plugins: 'autolink link image lists print preview',
+                        toolbar: 'styleselect | undo redo | bold italic | alignleft aligncenter alignright'
+                    }}
+                    onBlur={(event, value) => { field.input.onChange(event.target.getContent()) }}
+                />
+                <p className="error-block">{field.meta.touched ? field.meta.error : ''}</p>
+            </div>
+        );
+    }
+
+    onSubmit(values){
+        console.log(values);
+    }
+
     render() {
+        const { handleSubmit } = this.props;
+
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-xs-12">
                         <form
                             className="post-new-form"
-                            onSubmit={}>
+                            onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                             <Field
                                 label="Title"
                                 name="title"
+                                component={this.renderField}
+                            />
+
+                            <div>
+                                <label className="random-header"> Is active?</label>
+                                <div>
+                                    <label><Field name="status" component="input" type="radio" value="active"/> Active </label>
+                                </div>
+                            </div>
+                            <Field
+                                label="Meta Title"
+                                name="metaTitle"
                                 component={this.renderField}
                             />
                             <Field
@@ -93,11 +128,20 @@ function validate(values) {
     if (!values.title){
         errors.title = 'Enter a post title'
     }
+    if (!values.metaTitle){
+        errors.metaTitle = 'Enter meta title'
+    }
     if (!values.metaDescription){
         errors.metaDescription = 'Enter description'
     }
     if (!values.metaKeywords) {
         errors.metaKeywords = 'Enter keywords'
+    }
+    if (!values.status){
+        errors.status = 'Must be "Active'
+    }
+    if (!values.body){
+        errors.body = 'Fill post body'
     }
 
     return errors;

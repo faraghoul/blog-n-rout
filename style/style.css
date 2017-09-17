@@ -146,15 +146,15 @@ a.nav-link, button.nav-link{
     border-top: none;
     display: block;
 }
-.form-grouping label{
+.form-grouping label, .random-header{
     font-family: MonsterRat;
     display: block;
     font-size: 24px;
-    margin: 0;
     padding: 0;
     line-height: 1;
     color: #608499;
     text-transform: uppercase;
+    margin-bottom: 15px;
 }
 .form-grouping input:focus{
     border-bottom: 2px solid #608499;
@@ -164,6 +164,10 @@ a.nav-link, button.nav-link{
     outline: none;
 }
 
+.error-block{
+    color: crimson;
+    font-weight: 700;
+}
 
 
 
