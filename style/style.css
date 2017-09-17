@@ -134,6 +134,7 @@ a.nav-link, button.nav-link{
 
 .form-grouping{
     margin: 50px 0;
+    border-radius: 0px;
 }
 
 .form-grouping input{
