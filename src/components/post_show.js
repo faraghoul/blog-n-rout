@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import  {Link} from 'react-router-dom';
 import {fetchPost} from '../actions';
 import AppShowDate from './show_post_date';
+import PostComments from './post_comments';
 
 
 
@@ -40,9 +41,7 @@ class PostShow extends Component {
                 <div className="article-body" dangerouslySetInnerHTML={{ __html: post.body }}>
                     {/*{post.body}*/}
                 </div>
-                <div className="comments">
-
-                </div>
+                <PostComments/>
             </section>
         );
     }
