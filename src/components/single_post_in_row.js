@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Moment from 'moment';
+import {Link} from 'react-router-dom';
+import AppShowDate from './show_post_date';
 
 class AppSingleRowArticle extends Component {
 
@@ -8,22 +9,16 @@ class AppSingleRowArticle extends Component {
 
         this.state = {
             postContent: props.postContent,
-            dateCreated: Moment(props.postContent.created.slice(0,10), "MM-DD-YYYY")
+            date: props.postContent.created
         };
+
+        console.log(this.state.dateCreated);
     }
 
     render() {
         return (
             <div className="single-article">
-                <div className="date">
-                    <p className="day-date">
-                        {this.state.dateCreated.format('DD')}
-                    </p>
-                    <p className="rest-data">
-                        <span className="week-day">{this.state.dateCreated.format('dddd')}</span><br/>
-                        <span className="month-year">{this.state.dateCreated.format('MMMM YYYY')}</span>
-                    </p>
-                </div>
+                <AppShowDate date={this.state.date}></AppShowDate>
                 <div className="img">
                     <img src="../../assets/back-img.png" alt="" className="img-responsive" />
                 </div>
@@ -33,7 +28,9 @@ class AppSingleRowArticle extends Component {
                     </h2>
                     {this.state.postContent.metaDescription}
                     <span>
-                      continue reading
+                        <Link to={`/posts/${this.state.postContent._id}`}>
+                           Continue reading
+                        </Link>
                   </span>
                 </div>
             </div>
