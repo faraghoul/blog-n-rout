@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import  {Link} from 'react-router-dom';
 import {fetchPost} from '../actions';
-import AppShowDate from './show_post_date'
+import AppShowDate from './show_post_date';
+
 
 
 class PostShow extends Component {
@@ -11,6 +12,9 @@ class PostShow extends Component {
         const {id} = this.props.match.params;
         this.props.fetchPost(id);
     }
+
+    renderComments(){}
+
 
     render() {
         console.log('from render we got props: ', this.props);
@@ -26,11 +30,20 @@ class PostShow extends Component {
         }
 
         return (
-            <div className="holder">
-                <AppShowDate date={post.created}></AppShowDate>
-                <h3>{post.title}</h3>
-            </div>
+            <section className="article-full">
+                <div className="article-start-section">
+                    <AppShowDate date={post.created}></AppShowDate>
+                </div>
+                <h1 className="article-header">
+                    {post.title}
+                </h1>
+                <div className="article-body" dangerouslySetInnerHTML={{ __html: post.body }}>
+                    {/*{post.body}*/}
+                </div>
+                <div className="comments">
 
+                </div>
+            </section>
         );
     }
 }

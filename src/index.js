@@ -24,14 +24,14 @@ ReactDOM.render(
                 <AppHeader />
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-9">
+                        <div className="col-md-10">
                             <Switch>
                                 <Route path="/posts/create" component={PostNew} />
                                 <Route path="/posts/:id" component={PostShow} />
                                 <Route path="/" component={PostIndex} />
                             </Switch>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-2">
 
                                 <Link
                                     className="nav-link"

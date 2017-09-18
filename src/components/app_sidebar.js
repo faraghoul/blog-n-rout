@@ -8,7 +8,7 @@ class AppSidebar extends Component{
             <div className="sidebar">
             <a className="contact-today" href="https://windsorcorporateservices.com/contact/">
                 Contact us today for more information.
-                <i class="fa fa-caret-right" aria-hidden="true"></i>
+                <i className="fa fa-caret-right" aria-hidden="true"></i>
             </a>
             </div>
         );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  {Link} from 'react-router-dom';
 
 class AppHeader extends Component{
 
@@ -10,19 +11,33 @@ class AppHeader extends Component{
     render(){
         return (
             <header>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="title-s">
-                            <div className="service-title">
-                                <div className="container">
-                                    <div>
-                                        <h1>Blog</h1>
-                                    </div>
-                                </div>
+                <section >
+                    <div className="container">
+                        <div className="row">
+
+                            <div className="upper-header">
+                                <Link to="/"><img src="../../assets/logo-home.png" alt=""/></Link>
+                                <ul className="custom-menulist">
+                                    <li>About us</li>
+                                    <li>Services</li>
+                                    <li>Guarantee</li>
+                                    <li>Resources</li>
+                                    <li>Forms</li>
+                                    <li>Contact</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
+                <section className="service-title" >
+                    <div className="container">
+                        <div className="row">
+                            <div>
+                                <h1>Blog</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </header>
         );
     }
