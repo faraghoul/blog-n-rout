@@ -27,7 +27,7 @@ class AppSingleRowArticle extends Component {
                         {this.state.postContent.title}
                     </h2>
                     {this.state.postContent.metaDescription}
-                    <span>
+                    <span className="link-wrap-post-row">
                         <Link to={`/posts/${this.state.postContent._id}`}>
                            Continue reading
                         </Link>

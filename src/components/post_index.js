@@ -34,21 +34,11 @@ class PostIndex extends Component{
             );
         }
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-9">
-                        {this.renderPosts()}
-                    </div>
-                    <div className="col-md-3">
-                        <Link
-                            className="nav-link"
-                            to="/posts/create">
-                            Create a new masterpiece!
-                        </Link>
-                    </div>
-                </div>
+            <div>
+                {this.renderPosts()}
             </div>
-        );
+        )
+
     }
 }
 

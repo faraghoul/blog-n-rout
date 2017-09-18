@@ -1,9 +1,9 @@
 {
-  "name": "redux-simple-starter",
+  "name": "Blog-n-rout",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Testing task for react-redux",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
+  "repository": "git@github.com:faraghoul/blog-n-rout.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-preset-stage-1": "^6.1.18",
+    "font-awesome": "^4.7.0",
     "lodash": "^3.10.1",
     "moment": "^2.18.1",
     "react": "^0.14.3",

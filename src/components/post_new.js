@@ -72,7 +72,7 @@ class PostNew extends Component {
         const { handleSubmit } = this.props;
 
         return (
-            <div className="container">
+
                 <div className="row">
                     <div className="col-xs-12">
                         <form
@@ -120,7 +120,7 @@ class PostNew extends Component {
                         </form>
                     </div>
                 </div>
-            </div>
+
 
         );
     }
