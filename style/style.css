@@ -237,7 +237,7 @@ div.article-body * {
     width: 400px;
     height: 50px;
     border-radius: 8px;
-    background-color: #aaaa90;
+    background-color: rgba(177, 178, 153, 0.5);
     color: #ffffff;
     font-family: MonsterRat;
     font-size: 18px;
@@ -254,6 +254,47 @@ div.article-body * {
 .submit-comment:focus{
     outline: none;
 }
+
+
+.comment-header{
+}
+
+ul.comments{
+    list-style: none;
+}
+
+ul.comments > li > div{
+    margin-bottom: 0;
+    padding: 25px 25px;
+    background-color: rgba(177, 178, 153, 0.5);
+    color: #4b869c;
+}
+ul.comments > li > ul{
+    padding: 25px 25px;
+    background-color: #4b869c;
+    color: #ffffff;
+    list-style: none;
+    margin-left: 50px;
+}
+
+.authName{
+    font-weight: 700;
+}
+
+.post-body{
+    margin: 25px 0;
+    font-size: 20px;
+}
+
+.comment-date{
+    text-align: right;
+}
+
+.body-comment{
+    width: 70%;
+}
+
+
 
 
 

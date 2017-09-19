@@ -9,16 +9,13 @@ class AppSingleRowArticle extends Component {
 
         this.state = {
             postContent: props.postContent,
-            date: props.postContent.created
         };
-
-        console.log(this.state.dateCreated);
     }
 
     render() {
         return (
             <div className="single-article">
-                <AppShowDate date={this.state.date}></AppShowDate>
+                <AppShowDate date={this.state.postContent.created}></AppShowDate>
                 <div className="img">
                     <img src="../../assets/back-img.png" alt="" className="img-responsive" />
                 </div>

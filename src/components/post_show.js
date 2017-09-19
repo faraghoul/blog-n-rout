@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import  {Link} from 'react-router-dom';
-import {fetchPost} from '../actions';
+import {fetchPost,postComment} from '../actions';
 import AppShowDate from './show_post_date';
 import PostComments from './post_comments';
 
@@ -41,7 +41,7 @@ class PostShow extends Component {
                 <div className="article-body" dangerouslySetInnerHTML={{ __html: post.body }}>
                     {/*{post.body}*/}
                 </div>
-                <PostComments/>
+                <PostComments  doComment={this.props.postComment} reFetch={this.props.fetchPost} author={post.author} comments={post.comments} id={post._id}/>
             </section>
         );
     }
@@ -52,5 +52,5 @@ function mapStateToProps({posts}, ownProps) {
     return {post: posts[ownProps.match.params.id]};
 }
 
-export default connect(mapStateToProps, {fetchPost})(PostShow);
+export default connect(mapStateToProps, {fetchPost,postComment})(PostShow);
 
