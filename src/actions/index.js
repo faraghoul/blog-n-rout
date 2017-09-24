@@ -5,15 +5,23 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_SINGLE_POST = 'FETCH_SINGLE_POST';
 export const COMMENT_ADDED = 'COMMENT_ADDED';
+export const GET_PAGES = 'GET_PAGES';
 
 
-export function fetchPosts() {
-    const request = Axios.get(API_URL);
-
+export function fetchPosts(pageNumber) {
+    const request = Axios.get(`${API_URL}?page=${pageNumber}`);
     return {
         type: FETCH_POSTS,
         payload: request
     };
+}
+
+export function getPagesQuant() {
+    const request = Axios.get(API_URL);
+    return{
+        type: GET_PAGES,
+        payload: request
+    }
 }
 
 export function createPost(values, callback){

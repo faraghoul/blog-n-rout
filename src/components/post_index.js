@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchPosts} from '../actions';
+import {getPagesQuant} from '../actions';
 import _ from 'lodash';
 
 import AppSingleRowArticle from './single_post_in_row';
 
-class PostIndex extends Component{
+class PostIndex extends Component {
 
-    componentDidMount(){
-        this.props.fetchPosts();
 
+
+    componentDidMount() {
+        this.props.fetchPosts(1);
+        this.props.getPagesQuant();
     }
 
     renderPosts() {
@@ -26,7 +28,22 @@ class PostIndex extends Component{
     }
 
 
-    render(){
+    renderPagination(){
+        var loopPage = [];
+         if(this.props.pages) {
+             for (let i = 1; i <= this.props.pages; i++) {
+                 loopPage.push(
+                     <div onClick={()=>(this.props.fetchPosts(i))}
+                         key={i}>
+                         {i}
+                     </div>);
+             }
+             return loopPage;
+         }
+    }
+
+
+    render() {
         console.log('From render method: ', this.props.posts);
         if (this.props.posts === null) {
             return (
@@ -34,18 +51,26 @@ class PostIndex extends Component{
             );
         }
         return (
-            <div>
-                {this.renderPosts()}
-            </div>
+            <section>
+                <div>
+                    {this.renderPosts()}
+                </div>
+                <div className="pagination-sec">
+                    {this.renderPagination()}
+                </div>
+            </section>
+
+
         )
 
     }
 }
 
 function mapStateToProps(state) {
-    return{
-        posts: state.posts
+    return {
+        posts: state.posts,
+        pages: state.pagesCount
     };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(PostIndex);
+export default connect(mapStateToProps, {fetchPosts, getPagesQuant})(PostIndex);

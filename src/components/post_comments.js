@@ -34,8 +34,6 @@ class PostComments extends Component {
 	}
 
 	onSubmit(){
-		console.log('START DOIN SHIT');
-		this.state.postComment(this.state.toPost, this.state.fetch(this.state.toPost.articleId));
 	}
 
 	render() {

@@ -294,6 +294,33 @@ ul.comments > li > ul{
     width: 70%;
 }
 
+.pagination-sec{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.pagination-sec div{
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #aaaa90;
+    padding: 5px;
+    color: #ffffff;
+    transition: 0.4s ease;
+    margin: 25px;
+    width: 30px;
+    height: 35px;
+    font-size: 20px;
+}
+
+.pagination-sec div:hover{
+    background-color:  #55556F;
+}
+
 
 
 
