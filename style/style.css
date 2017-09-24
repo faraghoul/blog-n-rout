@@ -264,10 +264,10 @@ ul.comments{
 }
 
 ul.comments > li > div{
-    margin-bottom: 0;
     padding: 25px 25px;
-    background-color: rgba(177, 178, 153, 0.5);
+    border: 1px solid rgba(177, 178, 153, 0.5);
     color: #4b869c;
+    margin-bottom: 10px;
 }
 ul.comments > li > ul{
     padding: 25px 25px;

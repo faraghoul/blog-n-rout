@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SingleComment from './single-comment';
 import Axios from 'axios';
+import {API_URL} from '../actions'
 
 
 class PostComments extends Component {
@@ -8,16 +9,16 @@ class PostComments extends Component {
 		super(props);
 		this.state = {
 			comments: props.comments,
-			toPost: {
-				articleId: props.id,
-				text: 'WOLOLOLOLOl',
-				author: props.author,
-				authorName: 'WOLOLOLOLOl'
-			},
-			fetch: props.reFetch,
-			postComment: props.doComment
+			textToSend: '',
+			authorNameToFill: '',
+            articleID: props.id,
+			authorId: props.author
 		}
 		console.log(this.state.fetch);
+		this.onAuthorChange = this.onAuthorChange.bind(this);
+        this.onCommentTextChange = this.onCommentTextChange.bind(this);
+        this.omCommentSubmit = this.onCommentSubmit.bind(this);
+        console.log('Comments array: ', this.state.comments);
 	}
 
 	renderComments() {
@@ -33,11 +34,41 @@ class PostComments extends Component {
 		}
 	}
 
-	onSubmit(){
+    onAuthorChange(event){
+        this.setState(
+        	{authorNameToFill:  event.target.value}
+        	);
+        console.log(this.state.authorNameToFill);
+    }
+
+    onCommentTextChange(event){
+    	this.setState(
+			{textToSend: event.target.value}
+		);
+    	console.log(this.state.textToSend);
 	}
 
-	render() {
+	onCommentSubmit(event){
+    	event.preventDefault();
+		let toSubmt = {
+            articleId: this.state.articleID,
+            text: this.state.textToSend,
+			author: this.state.authorId,
+            authorName: this.state.authorNameToFill
+		};
+		console.log(toSubmt);
+        Axios.post(`${API_URL}comment/`, toSubmt)
+			.then(
+				(response) => {
+					this.setState({
+						comments: [...this.state.comments, response.data]
+					})
+				}
+			);
+	}
 
+
+	render() {
 		return (
 			<section className="comments-section">
 				<h2 className="comment-header">
@@ -49,11 +80,18 @@ class PostComments extends Component {
 				<h2 className="comment-header">
 					New comment:
 				</h2>
-				<form className="post-new-comment">
+				<form className="post-new-comment" onSubmit={this.omCommentSubmit}>
 
 					<div className="form-group">
 						<label htmlFor="author">Author name:</label><br/>
-						<input type="text" name="author" className="comment-author-name" id="author"/>
+						<input
+							type="text"
+							name="author"
+							className="comment-author-name"
+							id="author"
+							value={this.state.authorNameToFill}
+							onChange={this.onAuthorChange}
+						/>
 					</div>
 
 					<div className="form-group">
@@ -65,6 +103,8 @@ class PostComments extends Component {
 							className="comment-text"
 							id="commentText"
 							defaultValue="Enter your comment..."
+							value={this.state.textToSend}
+							onChange={this.onCommentTextChange}
 						/>
 					</div>
 
@@ -75,5 +115,6 @@ class PostComments extends Component {
 			</section>
 		)
 	}
+
 }
 export default PostComments;
