@@ -18,9 +18,7 @@ class PostShow extends Component {
 
 
     render() {
-        console.log('from render we got props: ', this.props);
         const {post} = this.props;
-        console.log('after props', post);
 
         if (!post) {
             return (
@@ -48,7 +46,6 @@ class PostShow extends Component {
 }
 
 function mapStateToProps({posts}, ownProps) {
-    console.log('From map props:', posts[ownProps.match.params.id]);
     return {post: posts[ownProps.match.params.id]};
 }
 

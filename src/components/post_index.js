@@ -44,7 +44,6 @@ class PostIndex extends Component {
 
 
     render() {
-        console.log('From render method: ', this.props.posts);
         if (this.props.posts === null) {
             return (
                 <div>loading</div>

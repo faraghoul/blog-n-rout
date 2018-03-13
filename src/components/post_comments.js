@@ -14,11 +14,9 @@ class PostComments extends Component {
             articleID: props.id,
 			authorId: props.author
 		}
-		console.log(this.state.fetch);
 		this.onAuthorChange = this.onAuthorChange.bind(this);
         this.onCommentTextChange = this.onCommentTextChange.bind(this);
         this.omCommentSubmit = this.onCommentSubmit.bind(this);
-        console.log('Comments array: ', this.state.comments);
 	}
 
 	renderComments() {
@@ -37,15 +35,12 @@ class PostComments extends Component {
     onAuthorChange(event){
         this.setState(
         	{authorNameToFill:  event.target.value}
-        	);
-        console.log(this.state.authorNameToFill);
-    }
+        	);}
 
     onCommentTextChange(event){
     	this.setState(
 			{textToSend: event.target.value}
 		);
-    	console.log(this.state.textToSend);
 	}
 
 	onCommentSubmit(event){
@@ -56,7 +51,6 @@ class PostComments extends Component {
 			author: this.state.authorId,
             authorName: this.state.authorNameToFill
 		};
-		console.log(toSubmt);
         Axios.post(`${API_URL}comment/`, toSubmt)
 			.then(
 				(response) => {

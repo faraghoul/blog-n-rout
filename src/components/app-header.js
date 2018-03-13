@@ -17,14 +17,6 @@ class AppHeader extends Component{
 
                             <div className="upper-header">
                                 <Link to="/"><img src="../../assets/logo-home.png" alt=""/></Link>
-                                <ul className="custom-menulist">
-                                    <li>About us</li>
-                                    <li>Services</li>
-                                    <li>Guarantee</li>
-                                    <li>Resources</li>
-                                    <li>Forms</li>
-                                    <li>Contact</li>
-                                </ul>
                             </div>
                         </div>
                     </div>

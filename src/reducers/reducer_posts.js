@@ -8,7 +8,6 @@ export default function (state = {}, action) {
             return {...state, [action.payload.data._id] : action.payload.data};
 
         case FETCH_POSTS:
-            console.log( _.mapKeys(action.payload.data.articles, '_id'));
             return _.mapKeys(action.payload.data.articles, '_id');
 
         default:

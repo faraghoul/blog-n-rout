@@ -9,7 +9,6 @@ class AppShowDate extends Component{
             dateCreated: Moment(props.date.slice(0,10), "DD/MM/YYYY")
         };
 
-        console.log(this.state.dateCreated);
     }
 
     render(){

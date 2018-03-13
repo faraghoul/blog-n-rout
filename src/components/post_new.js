@@ -62,7 +62,6 @@ class PostNew extends Component {
     }
 
     onSubmit(values){
-        console.log(values);
         this.props.createPost(values,
             () => this.props.history.push('/')
         );
@@ -85,7 +84,7 @@ class PostNew extends Component {
                             />
 
                             <div>
-                                <label className="random-header"> Is active?</label>
+                                <label className="random-header"> Is active? Please, be shure radio-button is cheked out</label>
                                 <div>
                                     <label><Field name="status" component="input" type="radio" value="active"/> Active </label>
                                 </div>
